@@ -18,14 +18,12 @@ function showRepositories(response){
     const repos = response.items.map(repo => renderRespositories(repo))
     return `<ul>${repos}</ul>`
 }
-
 function renderRespositories(repo){
     return `<li><b>Name: </b><spanp>${repo.name}</span><br>
     <b>Description: </b><span>${repo.description}</span><br>
     <b>URL: </b><span>${repo.html_url}</span>
     <p><a href="#" data-repository="${repo.name}" data-owner="${repo.owner.login}" onclick="showCommits(this)">Show Commits</a></p>
-    </li><br>
-    `
+    </li><br> `
 }
 
 function showCommits(repo){
@@ -35,12 +33,10 @@ function showCommits(repo){
       displayError()
     })
   }
-
 function renderCommits(data){
     const commits = data.map(commit => addHtml(commit))
     return `<ul>${commits}</ul>`
 }
-
 function addHtml(commit){
     return `<li><img src=${commit.author.avatar_url} height="50" width="50"><br>
     <b>Author: </b><span>${commit.author.login}</span><br>
